@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<input type="text" id="text">
+<button>한/영 번역</button>
+
+<hr>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>	
+	
+<script>
+	$('button').click(function(){ // 버튼을 클릭하면
+		$.ajax({
+			url : '/getPapago',
+			type : 'get',
+			data : {'text' : $('#text').val()},
+			success : function(res){
+				var message = res.message;
+				var result = message.result;
+				var translatedText = result.translatedText;
+				var html = '<h1>' + translatedText + '</h1>';
+				$('hr').after(html);
+			}
+		})
+	});
+</script>

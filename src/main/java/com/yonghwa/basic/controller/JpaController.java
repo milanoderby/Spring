@@ -21,6 +21,12 @@ public class JpaController {
 		List<Product> list = productRepository.findAll();
 		return list;
 	}
+	
+	@GetMapping("/jpa/product2")
+	public Product product2(String name) {
+		Product list = productRepository.findByName(name);
+		return list;
+	}
 
 	@PostMapping("/jpa/product")
 	public String productPost(@ModelAttribute Product product) {
